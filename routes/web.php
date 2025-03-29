@@ -19,21 +19,6 @@ use App\Http\Controllers\KategoriController;
 |
 */
 
-Route::get('ini-url-maksa/{nama?}/di/{kota?}', function ($nama = 'Chavel', $kota = 'Surabaya') {
-    // return 'Halo '.$nama.'! Welcome to my blog bro!';
-    return view('utama', ['nama' => $nama, 'kota' => $kota]);
-});
-
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-
-Route::get('/administration', function () {
-    return view('administration');
-});
-
-
 //ADMINISTRATION
 Route::get('/', function () {
     // return 'Hello All!!!'; //ini literally cuman tunjukkin Hello All in the entire page
@@ -42,32 +27,15 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/about', function () {
-    // return 'Halaman About, hehe not yet juga :)';
-    return view('about', [
-        "name" => "adoravelc",
-        "email" => "adoravelc@gmail.com",
-        "image" => "https://i.pinimg.com/736x/12/88/f2/1288f23f6824599ea9ced844ae2eb878.jpg"
-    ]);
-});
-
-Route::get('/blog', function () {
-    // return 'Halaman blog guweh';
-    return view('posts');
-})->name('blog');
 
 Route::get('/laporan', function () {
     return view('laporan.laporan'); //ditambah titik soalnya itu di dalam folder laporan
 });
-Route::get('/home', function () {
-    return view('home');
-});
+
 Route::get('daftar-kategori', [KategoriController::class, 'index']);
 Route::get('daftar-makanan', [FoodController::class, 'index']);
 Route::get('daftar-order', [OrderController::class, 'index']);
 Route::get('daftar-customer', [CustomerController::class, 'index']);
-Route::resource('food', FoodController::class);
-
 
 //LAPORAN
 Route::get('laporan1', [LaporanController::class, 'laporan1']);

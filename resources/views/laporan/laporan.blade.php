@@ -128,3 +128,5 @@
 
     </div>
 @endsection
+@section('judul-halaman', 'Laporan Restoran')
+@section('judul-browser', 'Laporan Restoran')

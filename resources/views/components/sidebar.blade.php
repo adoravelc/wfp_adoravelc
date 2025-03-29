@@ -4,4 +4,5 @@
     <a href="{{ url('/daftar-makanan') }}">Foods</a>
     <a href="{{ url('/daftar-order') }}">Orders</a>
     <a href="{{ url('/daftar-customer') }}">Customers</a>
+    @include('components.footer')
 </div>
