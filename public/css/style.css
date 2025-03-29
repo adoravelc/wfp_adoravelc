@@ -3,6 +3,9 @@ body {
     font-family: 'Quicksand', sans-serif;
     margin-top: 50px;
     margin-left: 300px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
     align-items: center;
     justify-content: center;
     display: flex;

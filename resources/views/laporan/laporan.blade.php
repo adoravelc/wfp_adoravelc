@@ -1,7 +1,7 @@
 @extends('components.sidebar')
 @extends('layouts.app')
 @section('content')
-<link rel="stylesheet" href="{{asset('css/style.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" />
     <div class="container">
         <h1 class="text-center mb-5">Laporan Restoran</h1>
         <div class="row">
@@ -120,13 +120,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="text-center mt-5">
-                <a href="{{ url('/') }}" class="btn-pink">Back to Home</a>
-            </div>
         </div>
-
-    </div>
 @endsection
-@section('judul-halaman', 'Laporan Restoran')
-@section('judul-browser', 'Laporan Restoran')
+    @section('judul-halaman', 'Laporan Restoran')
+    @section('judul-browser', 'Laporan Restoran')
