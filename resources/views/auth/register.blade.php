@@ -5,7 +5,6 @@
         <h2>Register</h2>
         <form action="{{ route('register') }}" method="POST">
             @csrf
-
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" value="{{ old('name') }}" required class="form-control">
