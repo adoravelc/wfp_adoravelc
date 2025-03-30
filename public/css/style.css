@@ -1,5 +1,5 @@
 body {
-    background-color: #f8d8e4;
+    background-color: #ffffff;
     font-family: 'Quicksand', sans-serif;
     margin-top: 50px;
     margin-left: 300px;
@@ -12,9 +12,10 @@ body {
 }
 
 h1 {
-    color: #e75e9f;
+    color: #CB71A0;
     text-align: center;
     font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 
 .container-table {
@@ -23,7 +24,7 @@ h1 {
 }
 
 .btn-custom {
-    background-color: #e75e9f;
+    background-color: #CB71A0;
     color: white;
     border-radius: 25px;
     font-weight: bold;
@@ -44,16 +45,16 @@ h1 {
 }
 
 .card-header {
-    background-color: #f2b6c5;
+    background-color: #CFC0C8;
     font-weight: bold;
 }
 
 .card-body {
-    background-color: #f9e6f1;
+    background-color: #F9E6F1;
 }
 
 .card-footer {
-    background-color: #f8d8e4;
+    background-color: #CFC0C8;
 }
 
 .carousel-inner img {
@@ -70,7 +71,7 @@ h1 {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: #e75e9f;
+    background-color: #CB71A0;
     border-radius: 50%;
 }
 
@@ -85,22 +86,19 @@ h1 {
 }
 
 .carousel-indicators li {
-    background-color: #e75e9f;
+    background-color: #CB71A0;
 }
 
 .carousel-indicators .active {
-    background-color: #f3a7c1;
+    background-color: #F3A7C1;
 }
-
 
 footer {
     text-align: center;
     font-weight: 600;
     font-size: 14px;
-    color: #f9e6f1;
-    /* align-items: center; */
+    color: #F9E6F1;
     justify-content: center;
-    /* display: block; */
     margin-top: auto;
 }
 
@@ -113,7 +111,7 @@ footer {
 }
 
 .btn-pink {
-    background-color: #f8a8c8;
+    background-color: #F8A8C8;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -122,11 +120,11 @@ footer {
 }
 
 .btn-pink:hover {
-    background-color: #f3a7c1;
+    background-color: #F3A7C1;
 }
 
 .btn-home {
-    background-color: #e75e9f;
+    background-color: #CB71A0;
     color: white;
     border: none;
     padding: 5px 15px;
@@ -137,47 +135,45 @@ footer {
 }
 
 .btn-home:hover {
-    background-color: #f3a7c1;
-}
-
-.table {
-    width: 100%;
-    margin-top: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-}
-
-th,
-td {
-    padding: 10px;
-    text-align: center;
-}
-
-th {
-    background-color: #f2b6c5;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background-color: #f9e6f1;
-}
-
-tr:hover {
-    background-color: #f3a7c1;
-    cursor: pointer;
+    background-color: #F3A7C1;
 }
 
 .sidebar {
     width: 250px;
     height: 100%;
-    background-color: #e75e9f;
+    background-color: #444444;
     position: fixed;
     left: 0;
     top: 0;
-    padding-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 20px;
+}
+
+.sidebar-header {
+    width: 100%;
+    background-color: #444444;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sidebar-logo {
+    align-items: center;
+    display: flex;
+}
+
+.sidebar-logo-img {
+    width: 200px;
+    height: auto;
+}
+
+.sidebar-user {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-weight: bold;
 }
 
 .sidebar a {
@@ -191,24 +187,52 @@ tr:hover {
     border-radius: 5px;
     margin-bottom: 10px;
     transition: background-color 0.3s ease;
-    z-index: 1000;
 }
 
 .sidebar a:hover {
-    background-color: #d34977;
+    background-color: #CB71A0;
+}
+
+.sidebar a.active {
+    background-color: #CB71A0;
 }
 
 .sidebar .go-back {
-    background-color: #f8a8c8;
+    background-color: #F8A8C8;
 }
 
 .sidebar .go-back:hover {
-    background-color: #f3a7c1;
+    background-color: #F3A7C1;
 }
 
 .content {
-    /* margin-left: 250px; */
-    /* padding-left: 50px; */
     padding: 20px;
     padding-top: 20px;
+}
+
+/* Table-specific Styles (unchanged) */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #F2B6C5;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #F9E6F1;
+}
+
+tr:hover {
+    background-color: #F3A7C1;
+    cursor: pointer;
 }
