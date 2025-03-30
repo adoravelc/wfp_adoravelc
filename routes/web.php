@@ -6,6 +6,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\AuthController;
 
 
 /*
@@ -19,6 +20,18 @@ use App\Http\Controllers\KategoriController;
 |
 */
 
+//LOGIN&REGISTER
+// Show Login Form
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+// Handle Login Request
+Route::post('login', [AuthController::class, 'login']);
+// Show Registration Form
+Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+// Handle Registration Request
+Route::post('register', [AuthController::class, 'register']);
+// Logout Route
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
 //ADMINISTRATION
 Route::get('/', function () {
     // return 'Hello All!!!'; //ini literally cuman tunjukkin Hello All in the entire page
@@ -26,12 +39,9 @@ Route::get('/', function () {
     // return 'Halaman Home, hehe not yet :)';
     return view('home');
 });
-
-
 Route::get('/laporan', function () {
     return view('laporan.laporan'); //ditambah titik soalnya itu di dalam folder laporan
 });
-
 Route::get('daftar-kategori', [KategoriController::class, 'index']);
 Route::get('daftar-makanan', [FoodController::class, 'index']);
 Route::get('daftar-order', [OrderController::class, 'index']);
