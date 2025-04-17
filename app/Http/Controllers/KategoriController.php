@@ -23,4 +23,15 @@ class KategoriController extends Controller
         
         return view('kategori.index', ['categories' => $categories]);
     }
+
+    public function ambilProdukAjax($id)
+    {
+        // $products = DB::select("SELECT * FROM products WHERE category_id = ?", [$id]);
+        // $products = DB::table('products')->where("category_id", $id)->get();
+        // $products = Category::find($id)->products;
+        
+        // return response()->json($products);
+
+        return response("Ini dari controller id ".$id);
+    }
 }

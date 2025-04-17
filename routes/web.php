@@ -58,3 +58,6 @@ Route::get('laporan7', [LaporanController::class, 'laporan7']);
 Route::get('laporan8', [LaporanController::class, 'laporan8']);
 Route::get('laporan9', [LaporanController::class, 'laporan9']);
 Route::get('laporan10', [LaporanController::class, 'laporan10']);
+
+//AJAX
+Route::get('ambil-produk-ajax/{id}', [KategoriController::class, 'ambilProdukAjax']);
