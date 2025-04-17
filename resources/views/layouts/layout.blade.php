@@ -18,9 +18,9 @@
         <!-- ini pemanggilan controller -->
         @yield('content')
         <!-- contoh modals -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Launch demo modal
-        </button>
+        </button> -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -38,12 +38,10 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- <footer>
         <p>Powered by adoravelc | &copy; 2025</p>
     </footer> -->
 </body>
-
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </html>
