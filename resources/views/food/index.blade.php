@@ -1,5 +1,15 @@
 @extends('layouts.layout')
 @section('content')
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+    <div class="mb-3">
+        <a href="{{ route('foods.create') }}" class="btn btn-primary">
+            + Create Food
+        </a>
+    </div>
 <table border="1">
     <thead>
         <th>Id</th>

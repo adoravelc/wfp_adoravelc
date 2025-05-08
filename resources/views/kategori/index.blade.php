@@ -1,5 +1,10 @@
 @extends('layouts.layout')
 @section('content')
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
     <div class="mb-3">
         <a href="{{ route('categories.create') }}" class="btn btn-primary">
             + Create Category

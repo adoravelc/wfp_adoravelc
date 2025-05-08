@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FoodController extends Controller
 {
@@ -19,18 +21,28 @@ class FoodController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    //create new food
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('food.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:foods,name',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'nutrition_facts' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $food = Food::create($validated);
+
+        return redirect('/daftar-makanan')->with('success', 'Food "' . $food->name . '" added successfully!');
     }
+
 
     /**
      * Display the specified resource.

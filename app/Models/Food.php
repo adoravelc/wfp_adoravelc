@@ -8,14 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Food extends Model
 {
     use HasFactory;
-    protected $table ='foods';
-    public function category(){
-        return $this->belongsTo('App\Models\Category'); //many to one dengan category
+    protected $table = 'foods';
+    protected $fillable = ['name', 'description', 'price', 'nutrition_facts', 'category_id'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
+
     public function order()
     {
         return $this->belongsToMany(Order::class, 'food_orders')
-                    ->withPivot('quantity', 'grand_total') //menambahkan kolom pivot jika perlu
-                    ->withTimestamps();
+            ->withPivot('quantity', 'grand_total')
+            ->withTimestamps();
     }
 }

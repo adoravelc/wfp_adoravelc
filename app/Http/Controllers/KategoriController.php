@@ -48,13 +48,13 @@ class KategoriController extends Controller
             'name' => 'required|string|max:255|unique:categories,name',
         ]);
 
-        Category::create($validated);
+        $category = Category::create($validated);
 
         // $category = new Category();
         // $category->name = $validated['name'];
         // $category->save();
 
-        return redirect('/daftar-kategori')->with('success', 'Kategori berhasil ditambahkan!');
+        return redirect('/daftar-kategori')->with('success', 'Category "'.$category->name.'" added successfully!');
     }
 
     public function edit($id)
@@ -73,7 +73,7 @@ class KategoriController extends Controller
         $category->name = $validated['name'];
         $category->save(); // updated_at akan otomatis diupdate
 
-        return redirect('/daftar-kategori')->with('success', 'Kategori berhasil diperbarui!');
+        return redirect('/daftar-kategori')->with('success', 'Kategori $category diperbarui!');
     }
 
 }
