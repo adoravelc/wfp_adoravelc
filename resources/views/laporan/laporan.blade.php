@@ -3,7 +3,7 @@
 @section('content')
     <link rel="stylesheet" href="{{asset('css/style.css')}}" />
     <div class="container">
-        <h1 class="text-center mb-5">Laporan Restoran</h1>
+        <h1 class="text-center mb-5">Restaurant Reports</h1>
         <div class="row">
             <!-- Card 1: Laporan kategori Lunch -->
             <div class="col-md-4 mb-4">

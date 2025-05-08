@@ -22,11 +22,11 @@
                         alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://i.pinimg.com/736x/71/5a/a7/715aa7f603b1040fb874906808177fe8.jpg" class="d-block w-100"
+                    <img src="https://i.pinimg.com/736x/39/13/2c/39132cae07d396c21fb05c088a42e420.jpg" class="d-block w-100"
                         alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://i.pinimg.com/474x/f2/39/56/f239564f03dbd8525baa6f62dc06374a.jpg" class="d-block w-100"
+                    <img src="https://i.pinimg.com/736x/28/a3/06/28a3063f0ccb972cb0e2cd5cffd995d5.jpg" class="d-block w-100"
                         alt="...">
                 </div>
                 <div class="carousel-item">
