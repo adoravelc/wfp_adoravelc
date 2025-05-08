@@ -1,36 +1,43 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="insert-form-container">
-        <!-- <h1>Create Category</h1> -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <strong>Ups!</strong> There's a mistake in your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+    <div class="container">
+        <div class="card shadow">
+            <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <strong>Oops!</strong> There were some problems with your input.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-        <form action="{{ route('categories.store') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="name">Category Name</label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="Insert category name"
-                    value="{{ old('name') }}" required>
-            </div>
+                <form action="{{ route('categories.store') }}" method="POST">
+                    @csrf
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label fw-bold">Category Name</label>
+                        <input type="text" name="name" class="form-control" id="name" 
+                            placeholder="Enter category name" value="{{ old('name') }}" required>
+                    </div>
 
-            <div class="form-group" style="display: flex; gap: 10px; margin-top: 30px;">
-                <button type="button" onclick="window.location.href='{{ url('/daftar-kategori') }}'" class="btn-custom">
-                    Kembali
-                </button>
-                <button type="submit" class="btn-custom">Simpan</button>
+                    <div class="form-group" style="margin-top: 30px;">
+                        <div class="d-flex gap-2">
+                            <a href="{{ url('/daftar-kategori') }}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 @endsection
 
-@section('judul-halaman', 'Tambah Kategori')
-@section('judul-browser', 'Tambah Kategori')
+@section('judul-halaman', 'Add Category')
+@section('judul-browser', 'Add Category')
