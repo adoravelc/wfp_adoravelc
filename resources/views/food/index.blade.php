@@ -64,5 +64,5 @@
     @endforeach
 </table>
 @endsection
-@section('judul-halaman', 'Daftar Makanan')
-@section('judul-browser', 'Daftar Makanan')
+@section('judul-halaman', 'Food List')
+@section('judul-browser', 'Food List')

@@ -39,5 +39,5 @@
     </div>
 @endsection
 
-@section('judul-halaman', 'Add Category')
-@section('judul-browser', 'Add Category')
+@section('judul-halaman', 'Create Category')
+@section('judul-browser', 'Create Category')

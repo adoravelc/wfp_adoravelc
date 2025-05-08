@@ -106,8 +106,8 @@
         });
     </script>
 @endsection
-@section('judul-halaman', 'Daftar Kategori')
-@section('judul-browser', 'Daftar Kategori')
+@section('judul-halaman', 'Category List')
+@section('judul-browser', 'Category List')
 
 <!-- ini section kalo mau tiap page beda css, jadi ngelempar ini ke layout -->
 <!-- @section('modelku')

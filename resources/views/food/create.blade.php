@@ -77,5 +77,5 @@
     </div>
 @endsection
 
-@section('judul-halaman', 'Add Food')
-@section('judul-browser', 'Add Food')
+@section('judul-halaman', 'Create Food')
+@section('judul-browser', 'Create Food')

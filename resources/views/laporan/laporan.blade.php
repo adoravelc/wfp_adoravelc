@@ -122,5 +122,5 @@
             </div>
         </div>
 @endsection
-    @section('judul-halaman', 'Laporan Restoran')
-    @section('judul-browser', 'Laporan Restoran')
+    @section('judul-halaman', 'Restaurant Reports')
+    @section('judul-browser', 'Restaurant Reports')

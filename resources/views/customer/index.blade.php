@@ -15,5 +15,5 @@
     @endforeach
 </table>
 @endsection
-@section('judul-halaman', 'Daftar Customer')
-@section('judul-browser', 'Daftar Customer')
+@section('judul-halaman', 'Customer List')
+@section('judul-browser', 'Customer List')
