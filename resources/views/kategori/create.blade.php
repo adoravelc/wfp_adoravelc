@@ -32,5 +32,5 @@
     </div>
 @endsection
 
-<!-- @section('judul-halaman', 'Tambah Kategori')
-@section('judul-browser', 'Tambah Kategori') -->
+@section('judul-halaman', 'Tambah Kategori')
+@section('judul-browser', 'Tambah Kategori')
