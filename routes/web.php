@@ -47,6 +47,11 @@ Route::get('daftar-makanan', [FoodController::class, 'index']);
 Route::get('daftar-order', [OrderController::class, 'index']);
 Route::get('daftar-customer', [CustomerController::class, 'index']);
 
+//CRUD
+Route::get('create-kategori', [KategoriController::class, 'create'])->name('categories.create');
+Route::post('store-kategori', [KategoriController::class, 'store'])->name('categories.store');
+// Route::get('create-kategori', [KategoriController::class, 'create']);
+
 //LAPORAN
 Route::get('laporan1', [LaporanController::class, 'laporan1']);
 Route::get('laporan2', [LaporanController::class, 'laporan2']);

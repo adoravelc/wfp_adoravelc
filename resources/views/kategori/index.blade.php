@@ -1,5 +1,10 @@
 @extends('layouts.layout')
 @section('content')
+    <div class="mb-3">
+        <a href="{{ route('categories.create') }}" class="btn btn-primary">
+            + Create Category
+        </a>
+    </div>
     <table border="1">
         <thead>
             <tr>
@@ -22,10 +27,10 @@
                     <td>{{ $item->created_at }}</td>
                     <td>{{ $item->updated_at }}</td>
                     <!-- <td>
-                                                                                @foreach ($item->foods as $food)
-                                                                                    <li>{{ $food->name }} - Rp{{ $food->price }}</li>
-                                                                                @endforeach
-                                                                            </td> -->
+                                                                                        @foreach ($item->foods as $food)
+                                                                                            <li>{{ $food->name }} - Rp{{ $food->price }}</li>
+                                                                                        @endforeach
+                                                                                    </td> -->
                     <td>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#modal-kategori-{{ $item->id }}">
@@ -75,7 +80,7 @@
     </table>
 
     <!-- coba JQuery -->
-    <button class="btn btn-success" id="myJSBtn">CLick me!</button>
+    <!-- <button class="btn btn-success" id="myJSBtn">CLick me!</button> -->
     <div id="tryJS" style="display: none">You just clicked a button</div>
     <script>
         $("#myJSBtn").click(function () {

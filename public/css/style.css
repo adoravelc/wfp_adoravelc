@@ -440,3 +440,58 @@ p {
         margin: 20px auto;
     }
 }
+
+.insert-form-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.insert-form-container h1 {
+    text-align: center;
+    color: #d34977;
+    margin-bottom: 30px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.insert-form-container .form-group {
+    margin-bottom: 20px;
+}
+
+.insert-form-container label {
+    font-weight: bold;
+    color: #333;
+}
+
+.insert-form-container input[type="text"],
+.insert-form-container input[type="number"],
+.insert-form-container input[type="email"],
+.insert-form-container textarea,
+.insert-form-container select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #f9f9f9;
+}
+
+.insert-form-container button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #CB71A0;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.insert-form-container button[type="submit"]:hover {
+    background-color: #d34977;
+}
