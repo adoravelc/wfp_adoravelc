@@ -52,6 +52,8 @@ Route::get('create-kategori', [KategoriController::class, 'create'])->name('cate
 Route::post('store-kategori', [KategoriController::class, 'store'])->name('categories.store');
 Route::get('create-food', [FoodController::class, 'create'])->name('foods.create');
 Route::post('store-food', [FoodController::class, 'store'])->name('foods.store');
+Route::get('create-order', [OrderController::class, 'create'])->name('orders.create');
+Route::post('store-order', [OrderController::class, 'store'])->name('orders.store');
 
 //LAPORAN
 Route::get('laporan1', [LaporanController::class, 'laporan1']);

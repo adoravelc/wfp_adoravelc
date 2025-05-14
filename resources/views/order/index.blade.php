@@ -1,9 +1,20 @@
 @extends('layouts.layout')
 @section('content')
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    <div class="mb-3">
+        <a href="{{ route('orders.create') }}" class="btn btn-primary">
+            + Create Order
+        </a>
+    </div>
     <table border="1">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>User Name</th> <!-- Kolom baru -->
                 <th>Tanggal Dibuat</th>
                 <th>Status</th>
                 <th>Grand Total</th>
@@ -13,6 +24,9 @@
             @foreach ($orders as $item)
                 <tr>
                     <td class="text-center">{{ $item->id }}</td>
+                    <td class="text-center">
+                        {{ $item->user->name ?? 'Guest' }}
+                    </td>
                     <td class="text-center">{{ $item->date }}</td>
                     <td class="text-center">
                         @if($item->status == 0)
@@ -28,6 +42,7 @@
             @endforeach
         </tbody>
     </table>
+
 @endsection
 @section('judul-halaman', 'Order List')
 @section('judul-browser', 'Order List')

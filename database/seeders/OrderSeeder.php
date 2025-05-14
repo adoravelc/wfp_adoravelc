@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use App\Models\Food;
-use DB;
+use App\Models\User;
 
 class OrderSeeder extends Seeder
 {
@@ -14,46 +14,69 @@ class OrderSeeder extends Seeder
      */
     public function run(): void
     {
+        echo "Running OrderSeeder...\n";
+
         $foods = Food::all();
-        //ambil id food
-        $arrFoods = array();
-        foreach ($foods as $food) {
-            $arrFoods[$food->id] = $food->price;
+        $users = User::pluck('id')->toArray();
+
+        if ($foods->isEmpty() || empty($users)) {
+            echo "Foods or users are empty. Seeder skipped.\n";
+            return;
         }
 
-        $minFoodIndex = array_search(min($arrFoods), $arrFoods);
-        $maxFoodIndex = array_search(max($arrFoods), $arrFoods);
+        // Mapping: [food_id => price]
+        $arrFoods = $foods->pluck('price', 'id')->toArray();
+        $foodIds = array_keys($arrFoods);
 
-        $arrOrders = array();
-        $arrFoodOrders = array();
+        $arrOrders = [];
+        $arrFoodOrders = [];
+
         for ($i = 1; $i <= 50; $i++) {
-            //id, tgl, status, grand_total
-            $arrOrders[$i] = 
-            [
-                'id' => $i,
-                'date' => '2025-'.rand(1,12).'-'.rand(1,28).' '.rand(0,23).':'.rand(0,59).':'.rand(0,59),
-                'status' => rand(0,1),
-                'grand_total' => 0,
-                'created_at' => date('Y-m-d'),
-                'updated_at' => date('Y-m-d')
-            ];
             $grandTotal = 0;
-            for ($j = 1; $j <= rand(2,5); $j++) {
-                //order_id, food_id, qty, harga_jual
-                $foodId = rand($minFoodIndex, $maxFoodIndex);
+
+            $randomDate = sprintf(
+                "2025-%02d-%02d %02d:%02d:%02d",
+                rand(1, 12),
+                rand(1, 28),
+                rand(0, 23),
+                rand(0, 59),
+                rand(0, 59)
+            );
+
+            $orderId = $i;
+            $userId = $users[array_rand($users)];
+
+            // Insert order skeleton first
+            $arrOrders[] = [
+                'id' => $orderId,
+                'user_id' => $userId,
+                'date' => $randomDate,
+                'status' => rand(0, 1),
+                'grand_total' => 0, // will update later
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
+
+            // Generate 2–5 food items per order
+            foreach (range(1, rand(2, 5)) as $_) {
+                $foodId = $foodIds[array_rand($foodIds)];
                 $qty = rand(1, 10);
-                $arrFoodOrders[] = 
-                [
-                    'order_id' => $i,
-                    'food_id' => $foodId, 
+                $hargaJual = $arrFoods[$foodId];
+
+                $arrFoodOrders[] = [
+                    'order_id' => $orderId,
+                    'food_id' => $foodId,
                     'quantity' => $qty,
-                    'harga_jual' => $arrFoods[$foodId],
-                    'created_at' => date('Y-m-d'),
-                    'updated_at' => date('Y-m-d')
+                    'harga_jual' => $hargaJual,
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ];
-                $grandTotal += ($qty*$arrFoods[$foodId]);
+
+                $grandTotal += ($qty * $hargaJual);
             }
-            $arrOrders[$i]['grand_total'] = $grandTotal/1000;
+
+            // Update grand total (in thousands if needed)
+            $arrOrders[$i - 1]['grand_total'] = $grandTotal / 1000;
         }
 
         DB::table('orders')->insert($arrOrders);
