@@ -54,7 +54,7 @@ class KategoriController extends Controller
         // $category->name = $validated['name'];
         // $category->save();
 
-        return redirect('/daftar-kategori')->with('success', 'Category "'.$category->name.'" added successfully!');
+        return redirect('/daftar-kategori')->with('success', 'Category "' . $category->name . '" added successfully!');
     }
 
     public function edit($id)
@@ -73,7 +73,20 @@ class KategoriController extends Controller
         $category->name = $validated['name'];
         $category->save(); // updated_at akan otomatis diupdate
 
-        return redirect('/daftar-kategori')->with('success', 'Kategori $category diperbarui!');
+        return redirect('/daftar-kategori')->with('success', 'Kategori ' . $category->name . ' diperbarui!');
     }
 
+    public function destroy($id)
+    {
+        try {
+            $category = Category::findOrFail($id);
+            $category->delete();
+            return redirect('/daftar-kategori')->with('success', 'Deleted successfully!');
+        } catch (\PDOException $e) {
+            $message = "Make sure there is no related data before you delete it.";
+            return redirect('/daftar-kategori')->with('success', $message);
+        } catch (\Exception $e) {
+            return redirect('/daftar-kategori')->with('error', 'Category not found or could not be deleted.');
+        }
+    }
 }

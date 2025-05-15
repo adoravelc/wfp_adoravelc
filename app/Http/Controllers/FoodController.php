@@ -55,24 +55,39 @@ class FoodController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Food $food)
+    public function edit($id)
     {
-        //
+        $food = Food::findOrFail($id);
+        $categories = Category::all();
+        return view('food.edit', ['food' => $food, 'categories' => $categories]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Food $food)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'nutrition_facts' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $food = Food::findOrFail($id);
+        $food->update($validated);
+
+        return redirect('/daftar-makanan')->with('success', 'Food item "' . $food->name . '" updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Food $food)
+    public function destroy($id)
     {
-        //
+        try {
+            $food = Food::findOrFail($id);
+            $foodName = $food->name;
+            $food->delete();
+            return redirect('/daftar-makanan')->with('success', 'Food item "' . $foodName . '" deleted successfully!');
+        } catch (\PDOException $e) {
+            $message = "Make sure there is no related data before you delete it.";
+            return redirect('/daftar-makanan')->with('success', $message);
+        }
     }
 }

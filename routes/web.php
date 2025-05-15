@@ -42,10 +42,10 @@ Route::get('/', function () {
 Route::get('/laporan', function () {
     return view('laporan.laporan'); //ditambah titik soalnya itu di dalam folder laporan
 });
-Route::get('daftar-kategori', [KategoriController::class, 'index']);
-Route::get('daftar-makanan', [FoodController::class, 'index']);
-Route::get('daftar-order', [OrderController::class, 'index']);
-Route::get('daftar-customer', [CustomerController::class, 'index']);
+Route::get('daftar-kategori', [KategoriController::class, 'index'])->name('daftar-kategori');
+Route::get('daftar-makanan', [FoodController::class, 'index'])->name('daftar-makanan');
+Route::get('daftar-order', [OrderController::class, 'index'])->name('daftar-order');
+Route::get('daftar-customer', [CustomerController::class, 'index'])->name('daftar-customer');
 
 //CREATE
 Route::get('create-kategori', [KategoriController::class, 'create'])->name('categories.create');
@@ -54,6 +54,16 @@ Route::get('create-food', [FoodController::class, 'create'])->name('foods.create
 Route::post('store-food', [FoodController::class, 'store'])->name('foods.store');
 Route::get('create-order', [OrderController::class, 'create'])->name('orders.create');
 Route::post('store-order', [OrderController::class, 'store'])->name('orders.store');
+
+//UPDATE
+Route::get('edit-kategori/{id}', [KategoriController::class, 'edit'])->name('categories.edit');
+Route::post('update-kategori/{id}', [KategoriController::class, 'update'])->name('categories.update');
+Route::get('edit-food/{id}', [FoodController::class, 'edit'])->name('foods.edit');
+Route::post('update-food/{id}', [FoodController::class, 'update'])->name('foods.update');
+
+//DELETE
+Route::get('delete-kategori/{id}', [KategoriController::class, 'destroy'])->name('categories.destroy');
+Route::get('delete-food/{id}', [FoodController::class, 'destroy'])->name('foods.destroy');
 
 //LAPORAN
 Route::get('laporan1', [LaporanController::class, 'laporan1']);

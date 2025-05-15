@@ -39,12 +39,18 @@ class OrderController extends Controller
             return back()->withErrors('Please add at least one item.');
         }
 
+        // Calculate grand total properly by considering quantity
+        $grandTotal = 0;
+        foreach ($basket as $item) {
+            $grandTotal += $item['harga_jual'] * $item['quantity'];
+        }
+
         // 1. Buat order baru
         $order = Order::create([
             'user_id' => auth()->id() ?? null, // jika pakai auth
             'status' => 0, // misal ada status
             'date' => now(),
-            'grand_total' => array_sum(array_column($basket, 'harga_jual')),
+            'grand_total' => $grandTotal,
             'created_at' => now(),
         ]);
 

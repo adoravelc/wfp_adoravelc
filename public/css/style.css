@@ -495,3 +495,57 @@ p {
 .insert-form-container button[type="submit"]:hover {
     background-color: #d34977;
 }
+
+.btn-edit {
+    background-color: #F8A8C8;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    width: 120px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit:hover {
+    background-color: #F3A7C1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-delete {
+    background-color: #d34977;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    width: 120px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c23162;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-details {
+    background-color: #CB71A0;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    width: 120px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-details:hover {
+    background-color: #e75e9f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
