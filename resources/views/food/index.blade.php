@@ -1,15 +1,23 @@
 @extends('layouts.layout')
 @section('content')
+
+    <div class="mb-4">
+        <div class="d-flex">
+            <a href="{{ route('foods.create') }}" class="btn btn-custom d-inline-flex align-items-center me-2">
+                <i class="fas fa-plus me-2"></i> Tambah Makanan
+            </a>
+            <a href="{{ route('foods.trashed') }}" class="btn btn-custom d-inline-flex align-items-center me-2">
+                <i class="fas fa-trash me-2"></i> Lihat Terhapus
+            </a>
+        </div>
+    </div>
+
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
-    <div class="mb-3">
-        <a href="{{ route('foods.create') }}" class="btn btn-primary">
-            + Create Food
-        </a>
-    </div>
+
     <table border="1">
         <thead>
             <th>Id</th>
@@ -30,17 +38,17 @@
                 <td>Rp{{ $item->price }}</td>
                 <td>{{ $item->category->name }}</td>
                 <!-- <td>{{ $item->nutrition_facts }}</td> -->
-                 
+
                 <td>
                     <button type="button" class="btn btn-details" data-bs-toggle="modal"
-                                data-bs-target="#modal-food-{{ $item->id }}">
-                                <i class="fas fa-search"></i> Details
-                            </button>
+                        data-bs-target="#modal-food-{{ $item->id }}">
+                        <i class="fas fa-search"></i> Details
+                    </button>
 
                     <!-- <button type="button" class="btn btn-pink" data-bs-toggle="modal"
-                                data-bs-target="#modal-kategori-{{ $item->id }}">
-                                <i class="fas fa-search"></i> See Details
-                            </button> -->
+                                                data-bs-target="#modal-kategori-{{ $item->id }}">
+                                                <i class="fas fa-search"></i> See Details
+                                            </button> -->
                     <div class="modal fade" id="modal-food-{{ $item->id }}" tabindex="-1"
                         aria-labelledby="modal-food-{{ $item->nutrition_facts }}" aria-hidden="true">
                         <div class="modal-dialog">

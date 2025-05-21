@@ -61,9 +61,16 @@ Route::post('update-kategori/{id}', [KategoriController::class, 'update'])->name
 Route::get('edit-food/{id}', [FoodController::class, 'edit'])->name('foods.edit');
 Route::post('update-food/{id}', [FoodController::class, 'update'])->name('foods.update');
 
-//DELETE
+//SOFT DELETE
 Route::get('delete-kategori/{id}', [KategoriController::class, 'destroy'])->name('categories.destroy');
+Route::get('trashed-kategori', [KategoriController::class, 'trashed'])->name('categories.trashed');
+Route::get('restore-kategori/{id}', [KategoriController::class, 'restore'])->name('categories.restore');
+Route::get('permanentdelete-kategori/{id}', [KategoriController::class, 'forceDelete'])->name('categories.force-delete');
+
 Route::get('delete-food/{id}', [FoodController::class, 'destroy'])->name('foods.destroy');
+Route::get('trashed-food', [FoodController::class, 'trashed'])->name('foods.trashed');
+Route::get('restore-food/{id}', [FoodController::class, 'restore'])->name('foods.restore');
+Route::get('permanentdelete-food/{id}', [FoodController::class, 'forceDelete'])->name('foods.force-delete');
 
 //LAPORAN
 Route::get('laporan1', [LaporanController::class, 'laporan1']);

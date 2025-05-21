@@ -80,14 +80,46 @@ class FoodController extends Controller
 
     public function destroy($id)
     {
-        try {
-            $food = Food::findOrFail($id);
-            $foodName = $food->name;
-            $food->delete();
-            return redirect('/daftar-makanan')->with('success', 'Food item "' . $foodName . '" deleted successfully!');
-        } catch (\PDOException $e) {
-            $message = "Make sure there is no related data before you delete it.";
-            return redirect('/daftar-makanan')->with('success', $message);
+        $food = Food::find($id);
+
+        if (!$food) {
+            return redirect()->route('daftar-makanan')->with('error', 'Makanan tidak ditemukan');
         }
+
+        $food->delete();
+
+        return redirect()->route('daftar-makanan')->with('success', 'Makanan berhasil dihapus sementara');
+    }
+
+    public function trashed()
+    {
+        $trashedFoods = Food::onlyTrashed()->get();
+        return view('food.trashed', ['foods' => $trashedFoods]);
+    }
+
+    public function restore($id)
+    {
+        $food = Food::onlyTrashed()->find($id);
+
+        if (!$food) {
+            return redirect()->route('foods.trashed')->with('error', 'Makanan tidak ditemukan');
+        }
+
+        $food->restore();
+
+        return redirect()->route('foods.trashed')->with('success', 'Makanan berhasil dipulihkan');
+    }
+
+    public function forceDelete($id)
+    {
+        $food = Food::onlyTrashed()->find($id);
+
+        if (!$food) {
+            return redirect()->route('foods.trashed')->with('error', 'Makanan tidak ditemukan');
+        }
+
+        $food->forceDelete();
+
+        return redirect()->route('foods.trashed')->with('success', 'Makanan berhasil dihapus permanen');
     }
 }

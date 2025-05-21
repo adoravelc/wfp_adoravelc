@@ -78,15 +78,46 @@ class KategoriController extends Controller
 
     public function destroy($id)
     {
-        try {
-            $category = Category::findOrFail($id);
-            $category->delete();
-            return redirect('/daftar-kategori')->with('success', 'Deleted successfully!');
-        } catch (\PDOException $e) {
-            $message = "Make sure there is no related data before you delete it.";
-            return redirect('/daftar-kategori')->with('success', $message);
-        } catch (\Exception $e) {
-            return redirect('/daftar-kategori')->with('error', 'Category not found or could not be deleted.');
+        $category = Category::find($id);
+
+        if (!$category) {
+            return redirect()->route('daftar-kategori')->with('error', 'Kategori tidak ditemukan');
         }
+
+        $category->delete();
+
+        return redirect()->route('daftar-kategori')->with('success', 'Kategori berhasil dihapus sementara');
+    }
+
+    public function trashed()
+    {
+        $trashedCategories = Category::onlyTrashed()->get();
+        return view('kategori.trashed', ['categories' => $trashedCategories]);
+    }
+
+    public function restore($id)
+    {
+        $category = Category::onlyTrashed()->find($id);
+
+        if (!$category) {
+            return redirect()->route('kategori.trashed')->with('error', 'Kategori tidak ditemukan');
+        }
+
+        $category->restore();
+
+        return redirect()->route('kategori.trashed')->with('success', 'Kategori berhasil dipulihkan');
+    }
+
+    public function forceDelete($id)
+    {
+        $category = Category::onlyTrashed()->find($id);
+
+        if (!$category) {
+            return redirect()->route('kategori.trashed')->with('error', 'Kategori tidak ditemukan');
+        }
+
+        $category->forceDelete();
+
+        return redirect()->route('kategori.trashed')->with('success', 'Kategori berhasil dihapus permanen');
     }
 }

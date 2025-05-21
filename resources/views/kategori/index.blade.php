@@ -1,15 +1,22 @@
 @extends('layouts.layout')
 @section('content')
+    <div class="mb-4">        
+        <div class="d-flex">
+            <a href="{{ route('categories.create') }}" class="btn btn-custom d-inline-flex align-items-center me-2">
+                <i class="fas fa-plus me-2"></i> Tambah Kategori
+            </a>
+            <a href="{{ route('categories.trashed') }}" class="btn btn-custom d-inline-flex align-items-center me-2">
+                <i class="fas fa-trash me-2"></i> Lihat Terhapus
+            </a>
+        </div>
+    </div>
+
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
-    <div class="mb-3">
-        <a href="{{ route('categories.create') }}" class="btn btn-custom">
-            <i class="fas fa-plus"></i> Create Category
-        </a>
-    </div>
+
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -23,11 +30,12 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tableBody">
                 @foreach ($categories as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td class="produk-kategori" data-url="{{url('ambil-produk-ajax/' . $item->id)}}" data-id="{{ $item->id }}">
+                        <td class="produk-kategori" data-url="{{url('ambil-produk-ajax/' . $item->id)}}"
+                            data-id="{{ $item->id }}">
                             {{ $item->name }}
                             <div id="hasil-{{ $item->id }}"></div>
                         </td>
@@ -68,7 +76,8 @@
                                             </table>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
@@ -113,5 +122,5 @@
         });
     </script>
 @endsection
-@section('judul-halaman', 'Category List')
-@section('judul-browser', 'Category List')
+@section('judul-halaman', 'Daftar Kategori')
+@section('judul-browser', 'Daftar Kategori')
