@@ -84,6 +84,11 @@ class KategoriController extends Controller
             return redirect()->route('daftar-kategori')->with('error', 'Kategori tidak ditemukan');
         }
 
+        // Cek apakah kategori masih memiliki food
+        if ($category->foods()->count() > 0) {
+            return redirect()->route('daftar-kategori')->with('error', 'Kategori "' . $category->name . '" tidak dapat dihapus karena masih memiliki food');
+        }
+
         $category->delete();
 
         return redirect()->route('daftar-kategori')->with('success', 'Kategori berhasil dihapus sementara');
@@ -114,6 +119,11 @@ class KategoriController extends Controller
 
         if (!$category) {
             return redirect()->route('kategori.trashed')->with('error', 'Kategori tidak ditemukan');
+        }
+
+        // Cek apakah kategori masih memiliki food (untuk force delete juga)
+        if ($category->foods()->count() > 0) {
+            return redirect()->route('kategori.trashed')->with('error', 'Kategori "' . $category->name . '" tidak dapat dihapus permanen karena masih memiliki produk');
         }
 
         $category->forceDelete();

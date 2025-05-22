@@ -86,6 +86,10 @@ class FoodController extends Controller
             return redirect()->route('daftar-makanan')->with('error', 'Makanan tidak ditemukan');
         }
 
+        if ($food->order()->count() > 0) {
+            return redirect()->route('foods.trashed')->with('error', 'Makanan "' . $food->name . '" tidak dapat dihapus permanen karena sudah memiliki order');
+        }
+
         $food->delete();
 
         return redirect()->route('daftar-makanan')->with('success', 'Makanan berhasil dihapus sementara');
@@ -116,6 +120,10 @@ class FoodController extends Controller
 
         if (!$food) {
             return redirect()->route('foods.trashed')->with('error', 'Makanan tidak ditemukan');
+        }
+
+        if ($food->order()->count() > 0) {
+            return redirect()->route('foods.trashed')->with('error', 'Makanan "' . $food->name . '" tidak dapat dihapus permanen karena sudah memiliki order');
         }
 
         $food->forceDelete();

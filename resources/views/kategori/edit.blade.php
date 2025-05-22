@@ -15,7 +15,7 @@
                 @endif
                 <form action="{{ route('categories.update', $category->id) }}" method="POST">
                     @csrf
-                    @method('PUT')
+                    <!-- @method('PUT') -->
                     <div class="form-group mb-3">
                         <label for="name" class="form-label fw-bold">Category Name</label>
                         <input type="text" name="name" class="form-control" id="name"
