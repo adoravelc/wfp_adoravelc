@@ -100,12 +100,12 @@ class KategoriController extends Controller
         $category = Category::onlyTrashed()->find($id);
 
         if (!$category) {
-            return redirect()->route('kategori.trashed')->with('error', 'Kategori tidak ditemukan');
+            return redirect()->route('categories.trashed')->with('error', 'Kategori tidak ditemukan');
         }
 
         $category->restore();
 
-        return redirect()->route('kategori.trashed')->with('success', 'Kategori berhasil dipulihkan');
+        return redirect()->route('categories.trashed')->with('success', 'Kategori berhasil dipulihkan');
     }
 
     public function forceDelete($id)
