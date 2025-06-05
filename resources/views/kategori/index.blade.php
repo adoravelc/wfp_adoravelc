@@ -14,7 +14,6 @@
         </div>
     </div>
 
-
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -133,27 +132,27 @@
     <div class="modal fade" id="btnFormModal" tabindex="-1" aria-labelledby="btnFormModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="btnFormModalLabel">Tambah Kategori Baru</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route('categories.store') }}">
-                        @csrf
+                <form method="POST" action="{{ route('categories.store') }}">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="btnFormModalLabel">Tambah Kategori Baru</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama Kategori</label>
                             <input type="text" class="form-control" id="name" name="name"
                                 placeholder="Masukkan nama kategori" aria-describedby="nameHelp" required>
                             <div id="nameHelp" class="form-text text-muted">Silakan tulis nama kategori di sini.</div>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <div class="d-flex gap-2">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
-                </div>
+                    <div class="modal-footer">
+                        <div class="d-flex gap-2">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
