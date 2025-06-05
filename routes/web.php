@@ -86,3 +86,6 @@ Route::get('laporan10', [LaporanController::class, 'laporan10']);
 
 //AJAX
 Route::get('ambil-produk-ajax/{id}', [KategoriController::class, 'ambilProdukAjax']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
